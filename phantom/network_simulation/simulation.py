@@ -175,7 +175,9 @@ class Simulation:
         while True:
             if len(self._network) > 0:
                 miner = self._network.get_random_miner(according_to_hash_rate=True)
-                block = miner.mine_block()
+                print(miner)
+                block = miner.mine_block() 
+                print(block._data," data")				
                 self._log(str(miner.get_name()) + " mined " + str(block))
             else:
                 self._log("no miners left to mine blocks.")

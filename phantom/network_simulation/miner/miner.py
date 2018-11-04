@@ -8,6 +8,7 @@ import numpy as np
 
 from phantom.network_simulation.network import Network
 from phantom.dag import Block, DAG
+from .transaction import Transaction
 
 
 class Miner:
@@ -163,7 +164,7 @@ class Miner:
         block = Block(global_id=gid,
                       parents=self._dag.get_virtual_block_parents().copy(),
                       size=self._block_size,  # assume for the simulation's purposes that blocks are maximal
-                      data=self._name)  # use the data field to hold the miner's name for better logs
+                      data=Transaction("asdf",140)._amount)  # use the data field to hold the miner's name for better logs
         if not self.add_block(block):
             return None
         if not self._broadcast_added_blocks:
